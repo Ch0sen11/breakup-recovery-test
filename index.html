@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 分手与挽回成功率分析</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 粒子背景 -->
+    <div class="particles-bg" id="particles-bg"></div>
+
+    <div class="app-container">
+
+        <!-- ======== 欢迎页 ======== -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-card card-anim">
+                <div class="welcome-icon-wrap">
+                    <div class="welcome-icon">💔</div>
+                    <div class="icon-ring ring-1"></div>
+                    <div class="icon-ring ring-2"></div>
+                </div>
+                <h1 class="welcome-title">分手与挽回成功率分析</h1>
+                <p class="welcome-subtitle">基于四大心理学理论，科学评估你们复合的可能性</p>
+
+                <div class="theory-tags">
+                    <span class="tag">📎 依附理论</span>
+                    <span class="tag">💎 爱情三角理论</span>
+                    <span class="tag">🧠 情感智力</span>
+                    <span class="tag">🤝 冲突解决理论</span>
+                </div>
+
+                <div class="welcome-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">25</span>
+                        <span class="stat-lbl">个心理问题</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">5</span>
+                        <span class="stat-lbl">个维度分析</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">10</span>
+                        <span class="stat-lbl">分钟完成</span>
+                    </div>
+                </div>
+
+                <p class="welcome-desc">
+                    请根据你的实际情况，<strong>诚实地</strong>回答每一个问题。
+                    你的答案将帮助我们准确评估复合的可能性，并提供最适合的情感建议。
+                </p>
+
+                <button id="start-btn" class="btn-primary btn-large">
+                    开始测试 <span class="btn-arrow">→</span>
+                </button>
+
+                <p class="disclaimer">* 本测试基于心理学理论，仅供参考，不构成专业心理咨询建议</p>
+            </div>
+        </div>
+
+        <!-- ======== 问题页 ======== -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-wrap">
+
+                <!-- 顶部进度区 -->
+                <div class="quiz-header">
+                    <div class="progress-meta">
+                        <span id="question-counter" class="q-counter">第 1 题 / 共 25 题</span>
+                        <span id="progress-pct" class="q-pct">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progress-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 -->
+                <div class="question-card" id="question-card">
+                    <div class="question-meta">
+                        <span class="q-num" id="q-num">01</span>
+                        <span class="q-icon" id="q-icon">⏰</span>
+                    </div>
+                    <h2 class="q-text" id="q-text">问题加载中…</h2>
+                    <div class="options-wrap" id="options-container"></div>
+                </div>
+
+                <!-- 导航按钮 -->
+                <div class="quiz-nav">
+                    <button id="prev-btn" class="btn-nav btn-secondary" disabled>← 上一题</button>
+                    <button id="next-btn" class="btn-nav btn-primary" disabled>下一题 →</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ======== 结果页 ======== -->
+        <div id="result-screen" class="screen">
+            <div class="result-wrap">
+                <div class="result-card">
+
+                    <h1 class="result-heading">✨ 测试结果</h1>
+
+                    <!-- 分数圆环 -->
+                    <div class="score-ring-wrap">
+                        <svg class="score-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" id="grad-stop-1" stop-color="#e91e8c"/>
+                                    <stop offset="100%" id="grad-stop-2" stop-color="#7c4dff"/>
+                                </linearGradient>
+                            </defs>
+                            <circle class="ring-track" cx="100" cy="100" r="85"/>
+                            <circle class="ring-progress" id="ring-progress"
+                                cx="100" cy="100" r="85"
+                                stroke-dasharray="534.07"
+                                stroke-dashoffset="534.07"
+                                transform="rotate(-90 100 100)"/>
+                        </svg>
+                        <div class="score-center">
+                            <div class="score-pct" id="score-pct">0%</div>
+                            <div class="score-lbl">复合成功率</div>
+                        </div>
+                    </div>
+
+                    <!-- 类别徽章 -->
+                    <div id="result-badge" class="result-badge"></div>
+                    <p id="result-desc" class="result-desc"></p>
+
+                    <!-- 个性化建议 -->
+                    <div class="advice-section">
+                        <h3 class="section-title">💡 个性化建议</h3>
+                        <ul id="advice-list" class="advice-list"></ul>
+                    </div>
+
+                    <!-- 维度分析 -->
+                    <div class="dimension-section">
+                        <h3 class="section-title">📊 各维度分析</h3>
+                        <div id="dimension-grid" class="dimension-grid"></div>
+                    </div>
+
+                    <!-- 操作按钮 -->
+                    <div class="result-actions">
+                        <button id="restart-btn" class="btn-primary">🔄 重新测试</button>
+                    </div>
+
+                    <p class="disclaimer">* 本测试基于心理学理论，仅供参考，不代表专业心理评估</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
